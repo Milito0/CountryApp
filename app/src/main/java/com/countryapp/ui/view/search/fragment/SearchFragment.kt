@@ -30,9 +30,9 @@ class SearchFragment : Fragment() {
 
         if(continent!=null) {
             searchViewModel.getCountries(continent.toString())
-            binding.tvHolaMundo.text = continent
-            searchViewModel.countryData.observe(viewLifecycleOwner, Observer {
 
+            searchViewModel.countryData.observe(viewLifecycleOwner, Observer {
+                binding.tvHolaMundo.text = it[0].independent.toString()
             })
         }
         if(subContinent!=null) binding.tvHolaMundo.text = subContinent
