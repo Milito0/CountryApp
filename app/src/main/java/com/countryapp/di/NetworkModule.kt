@@ -1,5 +1,6 @@
 package com.countryapp.di
 
+import com.countryapp.data.network.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,5 +20,10 @@ object NetworkModule {
             .baseUrl("https://restcountries.com/v3.1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+    @Singleton
+    @Provides
+    fun proviveApiClient(retrofit: Retrofit): ApiService{
+        return retrofit.create(ApiService::class.java)
     }
 }

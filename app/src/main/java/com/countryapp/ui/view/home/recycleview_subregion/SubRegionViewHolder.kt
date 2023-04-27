@@ -1,4 +1,4 @@
-package com.countryapp.ui.home.recycleview_subregion
+package com.countryapp.ui.view.home.recycleview_subregion
 
 import android.view.View
 import androidx.core.content.ContextCompat

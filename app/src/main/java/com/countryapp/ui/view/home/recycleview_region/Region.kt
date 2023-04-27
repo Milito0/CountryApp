@@ -1,4 +1,4 @@
-package com.countryapp.ui.home.recycleview_region
+package com.countryapp.ui.view.home.recycleview_region
 
 
 data class Region(

@@ -1,4 +1,4 @@
-package com.countryapp.ui.home.fragment
+package com.countryapp.ui.view.home.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.countryapp.R
 import com.countryapp.databinding.FragmentHomeBinding
 import com.countryapp.ui.view.HomeActivity
-import com.countryapp.ui.home.recycleview_region.Region
-import com.countryapp.ui.home.recycleview_region.RegionAdapter
-import com.countryapp.ui.home.recycleview_subregion.SubRegion
-import com.countryapp.ui.home.recycleview_subregion.SubRegionAdapter
+import com.countryapp.ui.view.home.recycleview_region.Region
+import com.countryapp.ui.view.home.recycleview_region.RegionAdapter
+import com.countryapp.ui.view.home.recycleview_subregion.SubRegion
+import com.countryapp.ui.view.home.recycleview_subregion.SubRegionAdapter
 
 class HomeFragment : Fragment() {
 
