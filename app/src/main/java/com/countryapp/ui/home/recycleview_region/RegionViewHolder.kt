@@ -1,4 +1,4 @@
-package com.countryapp.ui.home.recycleview
+package com.countryapp.ui.home.recycleview_region
 
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -12,9 +12,9 @@ class RegionViewHolder(view: View): RecyclerView.ViewHolder(view) {
     fun render(region: Region, onItemSelected: (String) -> Unit){
         binding.tvName.text = region.name
         binding.tvCountryNumber.text = region.countries.toString()
-        binding.cvCountry.setCardBackgroundColor(ContextCompat.getColor(binding.cvCountry.context, region.color))
+        binding.cvContinent.setCardBackgroundColor(ContextCompat.getColor(binding.cvContinent.context, region.color))
 
-        binding.cvCountry.setOnClickListener(){ onItemSelected(region.codeName) }
+        binding.cvContinent.setOnClickListener{ onItemSelected(region.name) }
     }
 
 }

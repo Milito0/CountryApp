@@ -37,9 +37,15 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    fun changeToSearch(country: String) {
+    fun changeToSearchByContinent(continent: String) {
         val myBundle = Bundle()
-        myBundle.putString("COUNTRY", country)
+        myBundle.putString("CONTINENT", continent)
+        navController.navigate(R.id.searchFragment, myBundle)
+    }
+
+    fun changeToSearchBySubContinent(subContinent: String) {
+        val myBundle = Bundle()
+        myBundle.putString("SUBCONTINENT", subContinent)
         navController.navigate(R.id.searchFragment, myBundle)
     }
 }

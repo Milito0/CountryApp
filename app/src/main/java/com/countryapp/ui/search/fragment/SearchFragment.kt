@@ -1,4 +1,4 @@
-package com.countryapp.ui.search
+package com.countryapp.ui.search.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,15 +11,17 @@ class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
-    private var country: String? = null
+    private var continent: String? = null
+    private var subContinent: String? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let {
-            country = it.getString("COUNTRY")
-            binding.tvHolaMundo.text = country
+            continent = it.getString("CONTINENT")
+            subContinent = it.getString("SUBCONTINENT")
         }
 
-
+        if(continent!=null) binding.tvHolaMundo.text = continent
+        if(subContinent!=null) binding.tvHolaMundo.text = subContinent
 
     }
 

@@ -1,4 +1,4 @@
-package com.countryapp.ui.home.recycleview
+package com.countryapp.ui.home.recycleview_region
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
