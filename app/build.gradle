@@ -72,6 +72,8 @@ dependencies {
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    // Google maps
+    implementation "com.google.android.gms:play-services-maps:18.1.0"
 
 
 }

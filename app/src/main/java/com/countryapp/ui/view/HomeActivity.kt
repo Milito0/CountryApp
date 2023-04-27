@@ -8,13 +8,16 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.countryapp.R
 import com.countryapp.databinding.ActivityHomeBinding
+import com.countryapp.ui.view.search.fragment.DetailFragment
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    private lateinit var binding: ActivityHomeBinding
-
+    lateinit var binding: ActivityHomeBinding
+    private lateinit var map: GoogleMap
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,5 +52,15 @@ class HomeActivity : AppCompatActivity() {
         val myBundle = Bundle()
         myBundle.putString("SUBCONTINENT", subContinent)
         navController.navigate(R.id.searchFragment, myBundle)
+    }
+
+    fun createDetailFragment(){
+
+        navController.navigate(R.id.action_searchFragment_to_detailFragment)
+
+    }
+
+    override fun onMapReady(map: GoogleMap) {
+        this.map = map
     }
 }

@@ -10,12 +10,13 @@ class CountryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val binding = ItemCountryBinding.bind(view)
 
-    fun render(country: CountryItem) {
+    fun render(country: CountryItem, onItemSelected: () -> Unit) {
 
         if (country.flags != null) Picasso.get().load(country.flags.png).into(binding.ivCountry)
         binding.tvCountry.text = country.name.common
         binding.tvCapital.text = country.capital!![0]
         binding.tvRegion.text = country.region
 
+        binding.cvCountry.setOnClickListener{ onItemSelected()}
     }
 }

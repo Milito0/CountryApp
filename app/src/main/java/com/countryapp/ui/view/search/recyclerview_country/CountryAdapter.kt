@@ -7,7 +7,8 @@ import com.countryapp.R
 import com.countryapp.ui.domain.model.CountryItem
 
 class CountryAdapter (
-    private var countryList: List<CountryItem> = emptyList()
+    private var countryList: List<CountryItem> = emptyList(),
+    private var onItemSelected: () -> Unit
 ) : RecyclerView.Adapter<CountryViewHolder>() {
 
     fun updateList (countries: List<CountryItem>){
@@ -24,7 +25,7 @@ class CountryAdapter (
     override fun getItemCount() = countryList.size
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
-        holder.render(countryList[position])
+        holder.render(countryList[position], onItemSelected)
     }
 
 }
