@@ -1,11 +1,11 @@
-package com.countryapp.ui.view.home.recycleview
+package com.countryapp.ui.home.recycleview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.countryapp.R
 
-class RegionAdapter(private val regions: List<Region>) :
+class RegionAdapter(private val regions: List<Region>, private val onItemSelected: (String) -> Unit) :
     RecyclerView.Adapter<RegionViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RegionViewHolder {
@@ -14,7 +14,7 @@ class RegionAdapter(private val regions: List<Region>) :
     }
 
     override fun onBindViewHolder(holder: RegionViewHolder, position: Int) {
-        holder.render(regions[position])
+        holder.render(regions[position], onItemSelected)
     }
 
     override fun getItemCount() = regions.size

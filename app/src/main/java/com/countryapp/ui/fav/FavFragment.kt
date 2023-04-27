@@ -1,4 +1,4 @@
-package com.countryapp.ui.view.fav
+package com.countryapp.ui.fav
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

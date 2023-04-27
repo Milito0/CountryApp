@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/favFragment"
-        android:name="com.countryapp.ui.view.fav.FavFragment"
+        android:name="com.countryapp.ui.fav.FavFragment"
         android:label="fragment_fav"
         tools:layout="@layout/fragment_fav" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.countryapp.ui.view.search.SearchFragment"
+        android:name="com.countryapp.ui.search.SearchFragment"
         android:label="fragment_information"
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.countryapp.ui.view.home.HomeFragment"
+        android:name="com.countryapp.ui.home.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 </navigation>
