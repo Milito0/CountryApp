@@ -7,6 +7,6 @@ import retrofit2.http.Path
 
 interface ApiService {
 
-    @GET("region/{continent}?fields=name,region")
+    @GET("region/{continent}")
     suspend fun getCountriesFromContinent(@Path("continent") continent: String) : Response<List<CountryModel>>
 }

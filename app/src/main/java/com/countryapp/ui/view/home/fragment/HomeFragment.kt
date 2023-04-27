@@ -33,12 +33,14 @@ class HomeFragment : Fragment() {
     private fun initAdapters() {
         // Adapter para el RV de Continentes
         regionsAdapter = RegionAdapter(regions, { searchByContinent(it) })
+        binding.rvRegion.setHasFixedSize(true)
         binding.rvRegion.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvRegion.adapter = regionsAdapter
 
         // Adapter para el RV de SubContinentes
         subRegionAdapter = SubRegionAdapter(subRegions, { searchBySubContinent(it) })
+        binding.rvSubRegion.setHasFixedSize(true)
         binding.rvSubRegion.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         binding.rvSubRegion.adapter = subRegionAdapter

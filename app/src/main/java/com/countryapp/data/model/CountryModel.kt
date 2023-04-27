@@ -12,9 +12,9 @@ data class CountryModel (
     @SerializedName("region") val region: String,
     @SerializedName("capital") val capital: List<String>?,
     @SerializedName("subregion") val subRegion: String?,
-    @SerializedName("latlng") val latlng: String?,
-    @SerializedName("flag") val flag: Flag?
-
+    @SerializedName("latlng") val latlng: List<Float>,
+    @SerializedName("flags") val flags: Flag?,
+    @SerializedName("cioc") val code: String?
     )
 
 

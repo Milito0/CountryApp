@@ -9,17 +9,17 @@ data class CountryItem(
     val region: String,
     val capital: List<String>?,
     val subRegion: String?,
-    val latlng: String?,
-    val flag: Flag?
-
+    val latlng: List<Float>?,
+    val flags: Flag?,
+    val code: String?
 )
 
 data class CountryName(
-    val officialName: String
+    val common: String
 )
 
 data class Flag(
-    val officialName: String
+    val png: String
 )
 
-fun CountryModel.toDomain() = CountryItem(name, independent, borders, region, capital, subRegion, latlng, flag)
+fun CountryModel.toDomain() = CountryItem(name, independent, borders, region, capital, subRegion, latlng, flags, code)

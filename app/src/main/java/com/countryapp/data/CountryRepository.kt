@@ -1,5 +1,6 @@
 package com.countryapp.data
 
+import android.util.Log
 import com.countryapp.data.network.CountryService
 import com.countryapp.ui.domain.model.CountryItem
 import com.countryapp.ui.domain.model.toDomain
@@ -10,7 +11,7 @@ class CountryRepository @Inject constructor(
 ){
 
     suspend fun getContinentCountries(continent:String): List<CountryItem>{
-        return api.getCountriesByContinent(continent).map { it.toDomain() }
+        return api.getCountriesByContinent(continent).map { Log.i("milito", it.toString()); it.toDomain() }
     }
 
 }

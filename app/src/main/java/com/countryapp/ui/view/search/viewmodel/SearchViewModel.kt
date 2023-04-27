@@ -1,5 +1,6 @@
 package com.countryapp.ui.view.search.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,7 +19,9 @@ class SearchViewModel @Inject constructor(
     fun getCountries(continent: String){
         viewModelScope.launch {
             val result = getCountriesByContinent(continent)
-            countryData.postValue(result)
+            Log.i("milito", result.toString())
+            val filterResult = result.filter { it.independent }
+            countryData.postValue(filterResult)
         }
     }
 }
