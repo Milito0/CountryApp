@@ -9,15 +9,12 @@ import androidx.navigation.ui.setupWithNavController
 import com.countryapp.R
 import com.countryapp.databinding.ActivityHomeBinding
 import com.countryapp.ui.domain.model.CountryItem
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
+class HomeActivity : AppCompatActivity(){
 
     lateinit var binding: ActivityHomeBinding
-    private lateinit var map: GoogleMap
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,9 +55,7 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
         val myBundle = Bundle()
         myBundle.putString("ID", country.code)
         navController.navigate(R.id.detailFragment, myBundle)
+
     }
 
-    override fun onMapReady(map: GoogleMap) {
-        this.map = map
-    }
 }
