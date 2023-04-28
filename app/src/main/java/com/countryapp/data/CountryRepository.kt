@@ -13,6 +13,9 @@ class CountryRepository @Inject constructor(
     suspend fun getContinentCountries(continent:String): List<CountryItem>{
         return api.getCountriesByContinent(continent).map { it.toDomain() }
     }
+    suspend fun getSubContinentCountries(subContinent:String): List<CountryItem>{
+        return api.getCountriesBySubContinent(subContinent).map { it.toDomain() }
+    }
 
     suspend fun getCountryDetail(id: String): List<DetailCountryItem>{
         return api.getCountryByID(id).map {it.toDomain()}

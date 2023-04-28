@@ -10,6 +10,9 @@ interface ApiService {
     @GET("region/{continent}")
     suspend fun getCountriesFromContinent(@Path("continent") continent: String) : Response<List<CountryModel>>
 
+    @GET("subregion/{subContinent}")
+    suspend fun getCountriesFromSubContinent(@Path("subContinent") subContinent: String) : Response<List<CountryModel>>
+
     @GET("alpha/{id}")
     suspend fun getCountryByID(@Path("id") id: String): Response<List<DetailCountryModel>>
 

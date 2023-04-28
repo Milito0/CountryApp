@@ -1,7 +1,6 @@
 package com.countryapp.ui.view.search.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -42,10 +41,15 @@ class SearchFragment : Fragment() {
 
             searchViewModel.countryData.observe(viewLifecycleOwner, Observer {
                 adapter.updateList(it)
-                Log.i("Milito", it.toString())
             })
         }
-        //if(subContinent!=null)
+        if(subContinent!=null){
+            searchViewModel.getCountriesSubContinent(subContinent.toString())
+
+            searchViewModel.countryData.observe(viewLifecycleOwner, Observer {
+                adapter.updateList(it)
+            })
+        }
 
     }
 

@@ -14,7 +14,12 @@ class CountryService @Inject constructor(private val api: ApiService) {
             response.body()!!
         }
     }
-
+    suspend fun getCountriesBySubContinent(subContinent: String) : List<CountryModel>{
+        return withContext(Dispatchers.IO){
+            val response = api.getCountriesFromSubContinent(subContinent)
+            response.body()!!
+        }
+    }
     suspend fun getCountryByID(id: String): List<DetailCountryModel>{
         return withContext(Dispatchers.IO){
             val response = api.getCountryByID(id)
