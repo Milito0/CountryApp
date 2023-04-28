@@ -8,7 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.countryapp.R
 import com.countryapp.databinding.ActivityHomeBinding
-import com.countryapp.ui.view.search.fragment.DetailFragment
+import com.countryapp.ui.domain.model.CountryItem
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import dagger.hilt.android.AndroidEntryPoint
@@ -54,10 +54,10 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
         navController.navigate(R.id.searchFragment, myBundle)
     }
 
-    fun createDetailFragment(){
-
-        navController.navigate(R.id.action_searchFragment_to_detailFragment)
-
+    fun createDetailFragment(country: CountryItem){
+        val myBundle = Bundle()
+        myBundle.putString("ID", country.code)
+        navController.navigate(R.id.detailFragment, myBundle)
     }
 
     override fun onMapReady(map: GoogleMap) {

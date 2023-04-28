@@ -10,10 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.countryapp.databinding.FragmentSearchBinding
+import com.countryapp.ui.domain.model.CountryItem
 import com.countryapp.ui.view.HomeActivity
 import com.countryapp.ui.view.search.recyclerview_country.CountryAdapter
 import com.countryapp.ui.view.search.viewmodel.SearchViewModel
-import com.google.android.gms.maps.GoogleMap
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -50,7 +50,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun initUI() {
-        adapter = CountryAdapter{ goToDetails() }
+        adapter = CountryAdapter{ goToDetails(it) }
         binding.rvCountry.setHasFixedSize(true)
         binding.rvCountry.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
@@ -66,9 +66,9 @@ class SearchFragment : Fragment() {
         return binding.root
     }
 
-    private fun goToDetails(){
+    private fun goToDetails(country: CountryItem){
         val homeActivity = activity as HomeActivity
-        homeActivity.createDetailFragment()
+        homeActivity.createDetailFragment(country)
     }
 
 }

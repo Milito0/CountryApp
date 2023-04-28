@@ -8,7 +8,7 @@ import com.countryapp.ui.domain.model.CountryItem
 
 class CountryAdapter (
     private var countryList: List<CountryItem> = emptyList(),
-    private var onItemSelected: () -> Unit
+    private var onItemSelected: (CountryItem) -> Unit
 ) : RecyclerView.Adapter<CountryViewHolder>() {
 
     fun updateList (countries: List<CountryItem>){
