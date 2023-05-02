@@ -39,4 +39,11 @@ class CountryService @Inject constructor(private val api: ApiService) {
         }
     }
 
+    suspend fun getAllCountries(): List<CountryModel>{
+        return withContext(Dispatchers.IO) {
+            val response = api.getAllCountries()
+            response.body()!!
+        }
+    }
+
 }

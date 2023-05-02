@@ -19,4 +19,7 @@ interface ApiService {
     @GET("name/{name}")
     suspend fun getCountryByName(@Path("name") name: String): Response<List<CountryModel>>
 
+    @GET("independent?status=true")
+    suspend fun getAllCountries(): Response<List<CountryModel>>
+
 }

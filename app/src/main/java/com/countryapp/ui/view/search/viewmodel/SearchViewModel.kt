@@ -3,9 +3,12 @@ package com.countryapp.ui.view.search.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.countryapp.data.database.entities.toDatabase
 import com.countryapp.ui.domain.GetCountriesByContinent
 import com.countryapp.ui.domain.GetCountryByName
 import com.countryapp.ui.domain.GetCountryBySubContinent
+import com.countryapp.ui.domain.InsertFavCountry
+import com.countryapp.ui.domain.RemoveFavCountry
 import com.countryapp.ui.domain.model.CountryItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,7 +18,9 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(
     private val getCountriesByContinent: GetCountriesByContinent,
     private val getCountryBySubContinent: GetCountryBySubContinent,
-    private val getCountryByName: GetCountryByName
+    private val getCountryByName: GetCountryByName,
+    private val insertCountry: InsertFavCountry,
+    private val removeCountry: RemoveFavCountry
 ) : ViewModel() {
     val countryData = MutableLiveData<List<CountryItem>?>()
 
@@ -52,6 +57,17 @@ class SearchViewModel @Inject constructor(
             else
                 countryData.postValue(emptyList())
 
+        }
+    }
+
+    fun insertFavCountry (country: CountryItem){
+        viewModelScope.launch {
+            insertCountry(country.toDatabase())
+        }
+    }
+    fun removeFavCountry (country: CountryItem){
+        viewModelScope.launch {
+            removeCountry(country.toDatabase())
         }
     }
 }

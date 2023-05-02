@@ -1,4 +1,4 @@
-package com.countryapp.ui.view.search.recyclerview_country
+package com.countryapp.ui.view.fav.recyclerview_favcountry
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -7,7 +7,7 @@ import com.countryapp.databinding.ItemCountryBinding
 import com.countryapp.ui.domain.model.CountryItem
 import com.squareup.picasso.Picasso
 
-class CountryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class FavCountryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val binding = ItemCountryBinding.bind(view)
 
@@ -19,6 +19,11 @@ class CountryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     ) {
 
         if (country.flags != null) Picasso.get().load(country.flags.png).into(binding.ivCountry)
+        if (country.fav) {
+            binding.favImg.setImageResource(R.drawable.id_fav_full)
+        } else {
+            binding.favImg.setImageResource(R.drawable.ic_fav_border)
+        }
         binding.tvCountry.text = country.name.common
         binding.tvCapital.text = country.capital!![0]
         binding.tvRegion.text = country.region

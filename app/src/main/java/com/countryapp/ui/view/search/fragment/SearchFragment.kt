@@ -61,7 +61,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun initUI() {
-        adapter = CountryAdapter { goToDetails(it) }
+        adapter = CountryAdapter (onItemSelected = { goToDetails(it) }, addFavCountry = {addFavCountry(it)}, removeFavCountry = {removeFavCountry(it)})
         binding.rvCountry.setHasFixedSize(true)
         binding.rvCountry.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
@@ -120,6 +120,13 @@ class SearchFragment : Fragment() {
     private fun goToDetails(country: CountryItem) {
         val homeActivity = activity as HomeActivity
         homeActivity.createDetailFragment(country)
+    }
+
+    private fun addFavCountry(country: CountryItem){
+        searchViewModel.insertFavCountry(country)
+    }
+    private fun removeFavCountry(country: CountryItem){
+        searchViewModel.removeFavCountry(country)
     }
 
 }
