@@ -10,15 +10,31 @@ class CountryRepository @Inject constructor(
     private val api: CountryService
 ){
 
-    suspend fun getContinentCountries(continent:String): List<CountryItem>{
-        return api.getCountriesByContinent(continent).map { it.toDomain() }
+    suspend fun getContinentCountries(continent:String): List<CountryItem>?{
+        val x = api.getCountriesByContinent(continent)
+        if(x.isNullOrEmpty()){
+            return null
+        }
+        return api.getCountriesByContinent(continent)?.map { it.toDomain() }
     }
-    suspend fun getSubContinentCountries(subContinent:String): List<CountryItem>{
-        return api.getCountriesBySubContinent(subContinent).map { it.toDomain() }
+    suspend fun getSubContinentCountries(subContinent:String): List<CountryItem>?{
+        val x = api.getCountriesBySubContinent(subContinent)
+        if(x.isNullOrEmpty()){
+            return null
+        }
+        return api.getCountriesBySubContinent(subContinent)?.map { it.toDomain() }
     }
 
     suspend fun getCountryDetail(id: String): List<DetailCountryItem>{
         return api.getCountryByID(id).map {it.toDomain()}
+    }
+
+    suspend fun getCountryByName(name: String): List<CountryItem>?{
+        val x = api.getCountryByName(name)
+        if(x.isNullOrEmpty()){
+            return null
+        }
+        return api.getCountryByName(name)?.map { it.toDomain() }
     }
 
 }

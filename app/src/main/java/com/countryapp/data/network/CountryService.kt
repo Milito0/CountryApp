@@ -8,22 +8,34 @@ import javax.inject.Inject
 
 class CountryService @Inject constructor(private val api: ApiService) {
 
-    suspend fun getCountriesByContinent(continent: String) : List<CountryModel>{
-        return withContext(Dispatchers.IO){
+    suspend fun getCountriesByContinent(continent: String): List<CountryModel>? {
+        return withContext(Dispatchers.IO) {
             val response = api.getCountriesFromContinent(continent)
-            response.body()!!
+            if (response.body().isNullOrEmpty()) null
+            else response.body()!!
         }
     }
-    suspend fun getCountriesBySubContinent(subContinent: String) : List<CountryModel>{
-        return withContext(Dispatchers.IO){
+
+    suspend fun getCountriesBySubContinent(subContinent: String): List<CountryModel>? {
+        return withContext(Dispatchers.IO) {
             val response = api.getCountriesFromSubContinent(subContinent)
-            response.body()!!
+            if (response.body().isNullOrEmpty()) null
+            else response.body()!!
         }
     }
-    suspend fun getCountryByID(id: String): List<DetailCountryModel>{
-        return withContext(Dispatchers.IO){
+
+    suspend fun getCountryByID(id: String): List<DetailCountryModel> {
+        return withContext(Dispatchers.IO) {
             val response = api.getCountryByID(id)
             response.body()!!
+        }
+    }
+
+    suspend fun getCountryByName(name: String): List<CountryModel>? {
+        return withContext(Dispatchers.IO) {
+            val response = api.getCountryByName(name)
+            if (response.body().isNullOrEmpty()) null
+            else response.body()!!
         }
     }
 

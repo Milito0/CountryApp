@@ -4,11 +4,11 @@ import com.countryapp.data.CountryRepository
 import com.countryapp.ui.domain.model.CountryItem
 import javax.inject.Inject
 
-class GetCountriesByContinent @Inject constructor(
+class GetCountryByName @Inject constructor(
     private val repository: CountryRepository
 ) {
 
-    suspend operator fun invoke(country: String): List<CountryItem>?{
-        return repository.getContinentCountries(country)
+    suspend operator fun invoke(name: String): List<CountryItem>?{
+        return repository.getCountryByName(name)
     }
 }

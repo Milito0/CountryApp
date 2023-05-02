@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.countryapp.ui.domain.GetCountriesByContinent
+import com.countryapp.ui.domain.GetCountryByName
 import com.countryapp.ui.domain.GetCountryBySubContinent
 import com.countryapp.ui.domain.model.CountryItem
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,22 +14,41 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     private val getCountriesByContinent: GetCountriesByContinent,
-    private val getCountryBySubContinent: GetCountryBySubContinent
-) : ViewModel () {
+    private val getCountryBySubContinent: GetCountryBySubContinent,
+    private val getCountryByName: GetCountryByName
+) : ViewModel() {
     val countryData = MutableLiveData<List<CountryItem>>()
 
-    fun getCountries(continent: String){
+    fun getCountries(continent: String) {
         viewModelScope.launch {
             val result = getCountriesByContinent(continent)
-            val filterResult = result.filter { it.independent }
-            countryData.postValue(filterResult)
+            if(!result.isNullOrEmpty()){
+                val filterResult = result.filter { it.independent }
+                countryData.postValue(filterResult)
+            }
+
         }
     }
-    fun getCountriesSubContinent(subContinent: String){
+
+    fun getCountriesSubContinent(subContinent: String) {
         viewModelScope.launch {
             val result = getCountryBySubContinent(subContinent)
-            val filterResult = result.filter { it.independent }
-            countryData.postValue(filterResult)
+            if(!result.isNullOrEmpty()){
+                val filterResult = result.filter { it.independent }
+                countryData.postValue(filterResult)
+            }
+        }
+    }
+
+    fun getCountriesByName(name: String) {
+        viewModelScope.launch {
+            if (!name.isNullOrEmpty()) {
+                val result = getCountryByName(name)
+                if (result != null){
+                    val filterResult = result.filter { it.independent }
+                    countryData.postValue(filterResult)
+                }
+            }
         }
     }
 }

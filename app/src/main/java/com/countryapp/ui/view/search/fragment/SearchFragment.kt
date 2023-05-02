@@ -60,14 +60,19 @@ class SearchFragment : Fragment() {
         binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                searchViewModel.getCountries(query.orEmpty())
+                when(binding.rgSearch.checkedRadioButtonId){
+                    binding.rbContinent.id -> {
+                        searchViewModel.getCountries(query.orEmpty())
+                    }
+                    binding.rbSubContinent.id -> {
+                        searchViewModel.getCountriesSubContinent(query.orEmpty())
+                    }
+                }
                 return false
             }
-
+            // Solo para busquedas de paises por nombre, ya que la api solo permite aqui la busqueda parcial
             override fun onQueryTextChange(newText: String?): Boolean {
-
-
-
+                if(binding.rbCountry.isChecked) searchViewModel.getCountriesByName(newText.orEmpty())
                 return false
             }
         })

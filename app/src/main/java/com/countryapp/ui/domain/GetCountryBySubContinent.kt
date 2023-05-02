@@ -8,7 +8,7 @@ class GetCountryBySubContinent @Inject constructor(
     private val repository: CountryRepository
 ) {
 
-    suspend operator fun invoke(country: String): List<CountryItem>{
+    suspend operator fun invoke(country: String): List<CountryItem>?{
         return repository.getSubContinentCountries(country)
     }
 }
