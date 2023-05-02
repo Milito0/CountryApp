@@ -11,7 +11,8 @@ data class CountryItem(
     val subRegion: String?,
     val latlng: List<Float>?,
     val flags: Flag?,
-    val code: String?
+    val code: String?,
+    var fav: Boolean = false
 )
 
 data class CountryName(

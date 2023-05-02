@@ -12,7 +12,8 @@ data class DetailCountryItem(
     val latlng: List<Float>,
     val flags: Flag?,
     val code: String?,
-    val population: Long
+    val population: Long,
+    var fav: Boolean = false
 )
 
 
