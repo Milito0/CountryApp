@@ -40,15 +40,21 @@ class SearchFragment : Fragment() {
 
         if (continent != null) {
             binding.progressBar.isVisible = true
+            binding.svSearch.setQuery(continent, false)
+            binding.rbContinent.isChecked = true
             searchViewModel.getCountries(continent.toString())
         }
         if (subContinent != null) {
+            binding.rbSubContinent.isChecked = true
+            binding.svSearch.setQuery(subContinent, false)
             binding.progressBar.isVisible = true
             searchViewModel.getCountriesSubContinent(subContinent.toString())
         }
 
         searchViewModel.countryData.observe(viewLifecycleOwner, Observer {
-            adapter.updateList(it)
+            if (it!=null){
+                adapter.updateList(it)
+            }
             binding.progressBar.isVisible = false
         })
 
@@ -74,6 +80,11 @@ class SearchFragment : Fragment() {
                         binding.progressBar.isVisible = true
                         searchViewModel.getCountriesSubContinent(query.orEmpty())
                     }
+
+                    binding.rbCountry.id -> {
+                        binding.progressBar.isVisible = true
+                        searchViewModel.getCountriesByName(query.orEmpty())
+                    }
                 }
                 return false
             }
@@ -88,6 +99,13 @@ class SearchFragment : Fragment() {
             }
         })
 
+        // A la hora de cambiar el radio button, hago que el search view busque de nuevo
+        binding.rgSearch.setOnCheckedChangeListener { _, _ ->
+            binding.svSearch.setQuery(
+                binding.svSearch.query,
+                true
+            )
+        }
     }
 
 

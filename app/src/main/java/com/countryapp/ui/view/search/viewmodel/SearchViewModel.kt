@@ -17,15 +17,13 @@ class SearchViewModel @Inject constructor(
     private val getCountryBySubContinent: GetCountryBySubContinent,
     private val getCountryByName: GetCountryByName
 ) : ViewModel() {
-    val countryData = MutableLiveData<List<CountryItem>>()
+    val countryData = MutableLiveData<List<CountryItem>?>()
 
     fun getCountries(continent: String) {
         viewModelScope.launch {
             val result = getCountriesByContinent(continent)
-            if(!result.isNullOrEmpty()){
-                val filterResult = result.filter { it.independent }
-                countryData.postValue(filterResult)
-            }
+            val filterResult = result?.filter { it.independent }
+            countryData.postValue(filterResult)
 
         }
     }
@@ -33,22 +31,18 @@ class SearchViewModel @Inject constructor(
     fun getCountriesSubContinent(subContinent: String) {
         viewModelScope.launch {
             val result = getCountryBySubContinent(subContinent)
-            if(!result.isNullOrEmpty()){
-                val filterResult = result.filter { it.independent }
-                countryData.postValue(filterResult)
-            }
+            val filterResult = result?.filter { it.independent }
+            countryData.postValue(filterResult)
+
         }
     }
 
     fun getCountriesByName(name: String) {
         viewModelScope.launch {
-            if (!name.isNullOrEmpty()) {
-                val result = getCountryByName(name)
-                if (result != null){
-                    val filterResult = result.filter { it.independent }
-                    countryData.postValue(filterResult)
-                }
-            }
+            val result = getCountryByName(name)
+            val filterResult = result?.filter { it.independent }
+            countryData.postValue(filterResult)
+
         }
     }
 }
