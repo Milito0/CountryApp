@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,21 +38,24 @@ class SearchFragment : Fragment() {
 
         initUI()
 
-        if(continent!=null) {
+        if (continent != null) {
+            binding.progressBar.isVisible = true
             searchViewModel.getCountries(continent.toString())
         }
-        if(subContinent!=null){
+        if (subContinent != null) {
+            binding.progressBar.isVisible = true
             searchViewModel.getCountriesSubContinent(subContinent.toString())
         }
 
         searchViewModel.countryData.observe(viewLifecycleOwner, Observer {
             adapter.updateList(it)
+            binding.progressBar.isVisible = false
         })
 
     }
 
     private fun initUI() {
-        adapter = CountryAdapter{ goToDetails(it) }
+        adapter = CountryAdapter { goToDetails(it) }
         binding.rvCountry.setHasFixedSize(true)
         binding.rvCountry.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
@@ -60,19 +64,26 @@ class SearchFragment : Fragment() {
         binding.svSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                when(binding.rgSearch.checkedRadioButtonId){
+                when (binding.rgSearch.checkedRadioButtonId) {
                     binding.rbContinent.id -> {
+                        binding.progressBar.isVisible = true
                         searchViewModel.getCountries(query.orEmpty())
                     }
+
                     binding.rbSubContinent.id -> {
+                        binding.progressBar.isVisible = true
                         searchViewModel.getCountriesSubContinent(query.orEmpty())
                     }
                 }
                 return false
             }
+
             // Solo para busquedas de paises por nombre, ya que la api solo permite aqui la busqueda parcial
             override fun onQueryTextChange(newText: String?): Boolean {
-                if(binding.rbCountry.isChecked) searchViewModel.getCountriesByName(newText.orEmpty())
+                if (binding.rbCountry.isChecked){
+                    binding.progressBar.isVisible = true
+                    searchViewModel.getCountriesByName(newText.orEmpty())
+                }
                 return false
             }
         })
@@ -88,7 +99,7 @@ class SearchFragment : Fragment() {
         return binding.root
     }
 
-    private fun goToDetails(country: CountryItem){
+    private fun goToDetails(country: CountryItem) {
         val homeActivity = activity as HomeActivity
         homeActivity.createDetailFragment(country)
     }
