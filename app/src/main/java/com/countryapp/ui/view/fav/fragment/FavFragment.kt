@@ -1,11 +1,11 @@
 package com.countryapp.ui.view.fav.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,19 +32,20 @@ class FavFragment : Fragment() {
         favViewModel.countryData.observe(viewLifecycleOwner, Observer {
             if (it!=null){
                 adapter.updateList(it)
+                binding.progressBar.isVisible = false
             }
         })
 
     }
 
     private fun initUI() {
-        Log.i("Milito", "1234")
         adapter = FavCountryAdapter (onItemSelected = { goToDetails(it) }, addFavCountry = {addFavCountry(it)}, removeFavCountry = {removeFavCountry(it)})
         binding.rvfav.setHasFixedSize(true)
         binding.rvfav.layoutManager =
             LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         binding.rvfav.adapter = adapter
 
+        binding.progressBar.isVisible = true
         favViewModel.getAllCountries()
     }
 

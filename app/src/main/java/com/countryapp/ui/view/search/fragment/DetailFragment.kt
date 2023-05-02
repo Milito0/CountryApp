@@ -40,7 +40,6 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
 
 
         if (id != null) {
-
             detailViewModel.getCountry(id.toString())
 
             detailViewModel.countryInfo.observe(viewLifecycleOwner, Observer {
