@@ -36,14 +36,31 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
         arguments?.let {
             id = it.getString("ID")
         }
+
+
+
         if (id != null) {
 
             detailViewModel.getCountry(id.toString())
 
             detailViewModel.countryInfo.observe(viewLifecycleOwner, Observer {
                 myCountry = it
+                initListeners()
                 updateView(myCountry)
             })
+        }
+    }
+
+    private fun initListeners() {
+        binding.ivHeart.setOnClickListener{
+            if(myCountry.fav){
+                binding.ivHeart.setImageResource(R.drawable.ic_favborder_details)
+                detailViewModel.removeFavCountry(myCountry)
+            }else{
+                binding.ivHeart.setImageResource(R.drawable.ic_fav_detail)
+                detailViewModel.insertFavCountry(myCountry)
+            }
+            myCountry.fav = !myCountry.fav
         }
     }
 
@@ -53,6 +70,7 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
 
         if (country.flags != null)
             Picasso.get().load(country.flags.png).into(binding.ivDetailCountry)
+        if(country.fav) binding.ivHeart.setImageResource(R.drawable.ic_fav_detail)
         binding.tvDetailTittle.text = country.name.common
         binding.tvDetailCapital.text = country.capital!![0]
     }
