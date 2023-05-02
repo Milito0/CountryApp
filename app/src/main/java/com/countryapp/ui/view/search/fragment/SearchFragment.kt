@@ -40,15 +40,13 @@ class SearchFragment : Fragment() {
 
         if (continent != null) {
             binding.progressBar.isVisible = true
-            binding.svSearch.setQuery(continent, false)
+            binding.svSearch.setQuery(continent, true)
             binding.rbContinent.isChecked = true
-            searchViewModel.getCountries(continent.toString())
         }
         if (subContinent != null) {
             binding.rbSubContinent.isChecked = true
-            binding.svSearch.setQuery(subContinent, false)
+            binding.svSearch.setQuery(subContinent, true)
             binding.progressBar.isVisible = true
-            searchViewModel.getCountriesSubContinent(subContinent.toString())
         }
 
         searchViewModel.countryData.observe(viewLifecycleOwner, Observer {
