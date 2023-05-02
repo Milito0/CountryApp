@@ -23,7 +23,10 @@ class SearchViewModel @Inject constructor(
         viewModelScope.launch {
             val result = getCountriesByContinent(continent)
             val filterResult = result?.filter { it.independent }
-            countryData.postValue(filterResult)
+            if(!filterResult.isNullOrEmpty())
+                countryData.postValue(filterResult)
+            else
+                countryData.postValue(emptyList())
 
         }
     }
@@ -32,7 +35,10 @@ class SearchViewModel @Inject constructor(
         viewModelScope.launch {
             val result = getCountryBySubContinent(subContinent)
             val filterResult = result?.filter { it.independent }
-            countryData.postValue(filterResult)
+            if(!filterResult.isNullOrEmpty())
+                countryData.postValue(filterResult)
+            else
+                countryData.postValue(emptyList())
 
         }
     }
@@ -41,7 +47,10 @@ class SearchViewModel @Inject constructor(
         viewModelScope.launch {
             val result = getCountryByName(name)
             val filterResult = result?.filter { it.independent }
-            countryData.postValue(filterResult)
+            if(!filterResult.isNullOrEmpty())
+                countryData.postValue(filterResult)
+            else
+                countryData.postValue(emptyList())
 
         }
     }
