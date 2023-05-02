@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/favFragment"
-        android:name="com.countryapp.ui.view.fav.FavFragment"
+        android:name="com.countryapp.ui.view.fav.fragment.FavFragment"
         android:label="fragment_fav"
         tools:layout="@layout/fragment_fav" >
 

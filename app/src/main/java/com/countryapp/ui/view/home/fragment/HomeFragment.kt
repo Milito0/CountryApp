@@ -26,7 +26,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initComponents()
+        initList()
         initAdapters()
     }
 
@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
         binding.rvSubRegion.adapter = subRegionAdapter
     }
 
-    private fun initComponents() {
+    private fun initList() {
         regions = listOf(
             Region("Europe", 44, R.color.europe),
             Region("Americas", 23, R.color.north_america),
