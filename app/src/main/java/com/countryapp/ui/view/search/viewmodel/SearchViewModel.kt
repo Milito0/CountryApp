@@ -7,6 +7,7 @@ import com.countryapp.data.database.entities.toDatabase
 import com.countryapp.ui.domain.GetCountriesByContinent
 import com.countryapp.ui.domain.GetCountryByName
 import com.countryapp.ui.domain.GetCountryBySubContinent
+import com.countryapp.ui.domain.GetCountryCodes
 import com.countryapp.ui.domain.InsertFavCountry
 import com.countryapp.ui.domain.RemoveFavCountry
 import com.countryapp.ui.domain.model.CountryItem
@@ -17,6 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(
     private val getCountriesByContinent: GetCountriesByContinent,
+    private val getCountryCodes: GetCountryCodes,
     private val getCountryBySubContinent: GetCountryBySubContinent,
     private val getCountryByName: GetCountryByName,
     private val insertCountry: InsertFavCountry,
@@ -27,10 +29,17 @@ class SearchViewModel @Inject constructor(
     fun getCountries(continent: String) {
         viewModelScope.launch {
             val result = getCountriesByContinent(continent)
+            val resultDB = getCountryCodes()
             val filterResult = result?.filter { it.independent }
-            if(!filterResult.isNullOrEmpty())
+            if (!filterResult.isNullOrEmpty()) {
+                filterResult.forEach { country ->
+                    resultDB.forEach {
+                        if (country.code == it.code)
+                            country.fav = true
+                    }
+                }
                 countryData.postValue(filterResult)
-            else
+            } else
                 countryData.postValue(emptyList())
 
         }
@@ -39,33 +48,48 @@ class SearchViewModel @Inject constructor(
     fun getCountriesSubContinent(subContinent: String) {
         viewModelScope.launch {
             val result = getCountryBySubContinent(subContinent)
+            val resultDB = getCountryCodes()
             val filterResult = result?.filter { it.independent }
-            if(!filterResult.isNullOrEmpty())
+            if (!filterResult.isNullOrEmpty()){
+                filterResult.forEach { country ->
+                    resultDB.forEach {
+                        if (country.code == it.code)
+                            country.fav = true
+                    }
+                }
                 countryData.postValue(filterResult)
+            }
             else
                 countryData.postValue(emptyList())
-
         }
     }
 
     fun getCountriesByName(name: String) {
         viewModelScope.launch {
             val result = getCountryByName(name)
+            val resultDB = getCountryCodes()
             val filterResult = result?.filter { it.independent }
-            if(!filterResult.isNullOrEmpty())
+            if (!filterResult.isNullOrEmpty()) {
+                filterResult.forEach { country ->
+                    resultDB.forEach {
+                        if (country.code == it.code)
+                            country.fav = true
+                    }
+                }
                 countryData.postValue(filterResult)
+            }
             else
                 countryData.postValue(emptyList())
-
         }
     }
 
-    fun insertFavCountry (country: CountryItem){
+    fun insertFavCountry(country: CountryItem) {
         viewModelScope.launch {
             insertCountry(country.toDatabase())
         }
     }
-    fun removeFavCountry (country: CountryItem){
+
+    fun removeFavCountry(country: CountryItem) {
         viewModelScope.launch {
             removeCountry(country.toDatabase())
         }

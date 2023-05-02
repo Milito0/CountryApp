@@ -19,6 +19,11 @@ class CountryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     ) {
 
         if (country.flags != null) Picasso.get().load(country.flags.png).into(binding.ivCountry)
+        if (country.fav) {
+            binding.favImg.setImageResource(R.drawable.id_fav_full)
+        } else {
+            binding.favImg.setImageResource(R.drawable.ic_fav_border)
+        }
         binding.tvCountry.text = country.name.common
         binding.tvCapital.text = country.capital!![0]
         binding.tvRegion.text = country.region
