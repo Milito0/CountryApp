@@ -7,7 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.countryapp.R
 import com.countryapp.databinding.ActivityLoginBinding
-import com.countryapp.ui.view.HomeActivity
+import com.countryapp.ui.view.home.HomeActivity
 
 class LoginActivity : AppCompatActivity() {
 

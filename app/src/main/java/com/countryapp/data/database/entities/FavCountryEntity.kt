@@ -10,8 +10,9 @@ import com.countryapp.ui.domain.model.DetailCountryItem
 data class FavCountryEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id") val id: Int = 0,
+    @ColumnInfo(name= "email") val email: String,
     @ColumnInfo(name = "code") val code: String?
 )
 
-fun CountryItem.toDatabase() = FavCountryEntity(code = code)
-fun DetailCountryItem.toDatabase() = FavCountryEntity(code = code)
+fun CountryItem.toDatabase(email: String) = FavCountryEntity(email = email, code = code)
+fun DetailCountryItem.toDatabase(email: String) = FavCountryEntity(email = email, code = code)

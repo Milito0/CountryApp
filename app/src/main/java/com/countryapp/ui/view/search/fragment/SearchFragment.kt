@@ -12,7 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.countryapp.databinding.FragmentSearchBinding
 import com.countryapp.ui.domain.model.CountryItem
-import com.countryapp.ui.view.HomeActivity
+import com.countryapp.ui.view.home.HomeActivity
 import com.countryapp.ui.view.search.recyclerview_country.CountryAdapter
 import com.countryapp.ui.view.search.viewmodel.SearchViewModel
 import dagger.hilt.android.AndroidEntryPoint

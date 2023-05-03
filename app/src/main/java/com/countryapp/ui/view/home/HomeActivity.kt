@@ -1,4 +1,4 @@
-package com.countryapp.ui.view
+package com.countryapp.ui.view.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

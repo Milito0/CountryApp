@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.countryapp.databinding.FragmentFavBinding
 import com.countryapp.ui.domain.model.CountryItem
-import com.countryapp.ui.view.HomeActivity
+import com.countryapp.ui.view.home.HomeActivity
 import com.countryapp.ui.view.fav.recyclerview_favcountry.FavCountryAdapter
 import com.countryapp.ui.view.fav.viewmodel.FavViewModel
 import dagger.hilt.android.AndroidEntryPoint
