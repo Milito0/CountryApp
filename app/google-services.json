@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "35962352415",
+    "project_id": "countryapp-eeeb6",
+    "storage_bucket": "countryapp-eeeb6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35962352415:android:c83949405d9cd8a801362a",
+        "android_client_info": {
+          "package_name": "com.countryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35962352415-moehpdu6aqnr5tp6halpskmqvcpi9ma2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYJxNnHHEYecpT405KRYrHKNIjwJHl7VQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35962352415-moehpdu6aqnr5tp6halpskmqvcpi9ma2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
