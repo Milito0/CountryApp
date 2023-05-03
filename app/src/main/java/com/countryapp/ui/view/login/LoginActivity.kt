@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
     }
     fun navigateToHome(email: String){
         val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra("email", email)
         startActivity(intent)
     }
 }

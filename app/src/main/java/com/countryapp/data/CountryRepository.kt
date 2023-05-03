@@ -6,6 +6,7 @@ import com.countryapp.data.network.CountryService
 import com.countryapp.ui.domain.model.CountryItem
 import com.countryapp.ui.domain.model.DetailCountryItem
 import com.countryapp.ui.domain.model.toDomain
+import com.countryapp.ui.view.home.HomeActivity.Companion.EMAIL
 import javax.inject.Inject
 
 class CountryRepository @Inject constructor(
@@ -41,7 +42,7 @@ class CountryRepository @Inject constructor(
     }
 
     suspend fun getCountryCodesFromDB(): List<FavCountryEntity>{
-        return favCountryDAO.getAllFavCountries()
+        return favCountryDAO.getAllFavCountries(EMAIL)
     }
 
     suspend fun getAllCountries(): List<CountryItem>{
@@ -52,7 +53,7 @@ class CountryRepository @Inject constructor(
         favCountryDAO.insertFavCountry(favCountry)
     }
     suspend fun removeCountry(favCountry: FavCountryEntity){
-        favCountryDAO.removeFavCountry(favCountry.code!!)
+        favCountryDAO.removeFavCountry(favCountry.code!!, EMAIL)
     }
 
 

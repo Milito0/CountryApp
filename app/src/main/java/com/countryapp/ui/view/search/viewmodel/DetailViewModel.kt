@@ -9,6 +9,7 @@ import com.countryapp.ui.domain.GetCountryCodes
 import com.countryapp.ui.domain.InsertFavCountry
 import com.countryapp.ui.domain.RemoveFavCountry
 import com.countryapp.ui.domain.model.DetailCountryItem
+import com.countryapp.ui.view.home.HomeActivity.Companion.EMAIL
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -36,12 +37,12 @@ class DetailViewModel @Inject constructor(
 
     fun insertFavCountry (country: DetailCountryItem){
         viewModelScope.launch {
-            insertCountry(country.toDatabase())
+            insertCountry(country.toDatabase(EMAIL))
         }
     }
     fun removeFavCountry (country: DetailCountryItem){
         viewModelScope.launch {
-            removeCountry(country.toDatabase())
+            removeCountry(country.toDatabase(EMAIL))
         }
     }
 

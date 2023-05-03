@@ -11,8 +11,13 @@ import com.countryapp.databinding.ActivityHomeBinding
 import com.countryapp.ui.domain.model.CountryItem
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity(){
+
+    companion object {
+        lateinit var EMAIL: String
+    }
 
     lateinit var binding: ActivityHomeBinding
     private lateinit var navController: NavController
@@ -26,6 +31,8 @@ class HomeActivity : AppCompatActivity(){
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
         bottomNavigationView.setupWithNavController(navController)
+
+        EMAIL = intent.extras!!.getString("email").toString()
 
         binding.navBar.setOnItemSelectedListener {
             Log.i("Milito", "Hola")

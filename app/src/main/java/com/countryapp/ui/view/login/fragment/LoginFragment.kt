@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.countryapp.databinding.FragmentLoginBinding
 import com.countryapp.ui.view.login.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment() {
 
@@ -21,6 +22,21 @@ class LoginFragment : Fragment() {
     }
 
     private fun initComponents() {
+        binding.btnLogin.setOnClickListener{
+            if (binding.etEmail.text.isNotEmpty() && binding.etPass.text.isNotEmpty()) {
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                    binding.etEmail.text.toString(),
+                    binding.etPass.text.toString()
+                ).addOnCompleteListener {
+                    if(it.isSuccessful){
+                        val activity = activity as LoginActivity
+                        activity.navigateToHome(binding.etEmail.text.toString())
+                    }
+                }
+            }
+        }
+
+
         binding.btnSignin.setOnClickListener{
             val activity = activity as LoginActivity
             activity.navigateToSignIn()

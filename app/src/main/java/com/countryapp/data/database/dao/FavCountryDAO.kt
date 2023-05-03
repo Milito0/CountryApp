@@ -8,12 +8,12 @@ import com.countryapp.data.database.entities.FavCountryEntity
 @Dao
 interface FavCountryDAO {
 
-    @Query("SELECT * FROM fav_country_table")
-    suspend fun getAllFavCountries(): List<FavCountryEntity>
+    @Query("SELECT * FROM fav_country_table WHERE email = :email")
+    suspend fun getAllFavCountries(email:String): List<FavCountryEntity>
 
     @Insert
     suspend fun insertFavCountry(favCountryEntity: FavCountryEntity)
 
-    @Query("DELETE FROM fav_country_table WHERE code = :code")
-    suspend fun removeFavCountry(code: String)
+    @Query("DELETE FROM fav_country_table WHERE (code = :code AND email = :email)")
+    suspend fun removeFavCountry(code: String, email:String)
 }
