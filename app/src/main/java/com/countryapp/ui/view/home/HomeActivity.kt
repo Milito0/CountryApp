@@ -1,5 +1,7 @@
 package com.countryapp.ui.view.home
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +11,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.countryapp.R
 import com.countryapp.databinding.ActivityHomeBinding
 import com.countryapp.ui.domain.model.CountryItem
+import com.countryapp.ui.view.login.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -63,6 +67,15 @@ class HomeActivity : AppCompatActivity(){
         myBundle.putString("ID", country.code)
         navController.navigate(R.id.detailFragment, myBundle)
 
+    }
+
+    fun clearPreferences(){
+        val preferences = getSharedPreferences(getString(R.string.preferences_file), Context.MODE_PRIVATE).edit()
+        preferences.clear()
+        preferences.apply()
+        FirebaseAuth.getInstance().signOut()
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
     }
 
 }

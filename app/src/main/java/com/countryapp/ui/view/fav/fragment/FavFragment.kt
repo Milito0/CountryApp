@@ -47,6 +47,11 @@ class FavFragment : Fragment() {
 
         binding.progressBar.isVisible = true
         favViewModel.getAllCountries()
+
+        binding.fabLogout.setOnClickListener{
+            val act = activity as HomeActivity
+            act.clearPreferences()
+        }
     }
 
     private fun goToDetails(country: CountryItem) {

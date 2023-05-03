@@ -5,4 +5,5 @@
     <string name="continent">Continent</string>
     <string name="subcontinent">SubContinent</string>
     <string name="country">Country</string>
+    <string name="preferences_file">PREFERENCE_FILE_KEY</string>
 </resources>
