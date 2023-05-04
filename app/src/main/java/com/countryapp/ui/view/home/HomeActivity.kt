@@ -44,9 +44,9 @@ class HomeActivity : AppCompatActivity(){
                 binding.navBar.menu.getItem(2).itemId -> navController.navigate(it.itemId)
             }
             true
-
         }
     }
+
 
     fun changeToSearchByContinent(continent: String) {
         val myBundle = Bundle()

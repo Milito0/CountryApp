@@ -71,7 +71,10 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
             Picasso.get().load(country.flags.png).into(binding.ivDetailCountry)
         if(country.fav) binding.ivHeart.setImageResource(R.drawable.ic_fav_detail)
         binding.tvDetailTittle.text = country.name.common
-        binding.tvDetailCapital.text = country.capital!![0]
+        binding.tvCapital.text = country.capital!![0]
+        binding.tvNumberPopulation.text = country.population.toString()
+        binding.tvContinent.text = country.region
+        binding.tvSubContinent.text = country.subRegion
     }
 
 

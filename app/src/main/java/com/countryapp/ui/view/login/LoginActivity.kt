@@ -52,6 +52,9 @@ class LoginActivity : AppCompatActivity() {
     fun navigateToSignIn() {
         navController.navigate(R.id.signinFragment)
     }
+    fun navigateToLogIn() {
+        navController.navigate(R.id.loginFragment)
+    }
 
     fun navigateToHome(email: String) {
 

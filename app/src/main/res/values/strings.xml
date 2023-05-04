@@ -6,4 +6,20 @@
     <string name="subcontinent">SubContinent</string>
     <string name="country">Country</string>
     <string name="preferences_file">PREFERENCE_FILE_KEY</string>
+    <string name="country_app">COUNTRY APP</string>
+    <string name="continents">Continents</string>
+    <string name="sub_continents">SubContinents</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="favorite">Favorites</string>
+    <string name="capital"><u>Capital</u></string>
+    <string name="population"><u>Population</u></string>
+    <string name="continent_detail">Continent:</string>
+    <string name="subcontinent_detail">SubContinent:</string>
+    <string name="login_button">Log-in</string>
+    <string name="signin_button">Sign-in</string>
+    <string name="google_button">Google:</string>
+    <string name="login"><u>Log-In</u></string>
+    <string name="signin"><u>Sign-In</u></string>
+    <string name="favorite_countries">Favorite Countries</string>
 </resources>

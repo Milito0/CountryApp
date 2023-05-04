@@ -28,13 +28,18 @@ class SigninFragment : Fragment() {
                     binding.etEmail.text.toString(),
                     binding.etPass.text.toString()
                 ).addOnCompleteListener {
-                    if(it.isSuccessful){
+                    if (it.isSuccessful) {
                         val activity = activity as LoginActivity
                         activity.navigateToHome(binding.etEmail.text.toString())
                     }
                 }
             }
 
+        }
+
+        binding.btnLogin.setOnClickListener {
+            val activity = activity as LoginActivity
+            activity.navigateToLogIn()
         }
     }
 
@@ -49,7 +54,7 @@ class SigninFragment : Fragment() {
     private fun checkPassword(): Boolean {
         if (binding.etPass.text.isEmpty()) return false
 
-        if (binding.etPass.text.toString() != binding.etRepeatPass.text.toString()){
+        if (binding.etPass.text.toString() != binding.etRepeatPass.text.toString()) {
             return false
         }
 

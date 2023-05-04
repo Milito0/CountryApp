@@ -56,34 +56,34 @@ class HomeFragment : Fragment() {
         )
 
         subRegions = listOf(
-            SubRegion("Northern Europe", R.color.europe),
-            SubRegion("Western Europe", R.color.europe),
-            SubRegion("Southern Europe", R.color.europe),
-            SubRegion("Southeast Europe", R.color.europe),
-            SubRegion("Central Europe", R.color.europe),
-            SubRegion("Eastern Europe", R.color.europe),
+            SubRegion("Northern Europe", R.color.subcontinent),
+            SubRegion("Western Europe", R.color.subcontinent),
+            SubRegion("Southern Europe", R.color.subcontinent),
+            SubRegion("Southeast Europe", R.color.subcontinent),
+            SubRegion("Central Europe", R.color.subcontinent),
+            SubRegion("Eastern Europe", R.color.subcontinent),
 
-            SubRegion("Caribbean", R.color.europe),
-            SubRegion("Melanesia", R.color.europe),
-            SubRegion("Polynesia", R.color.europe),
-            SubRegion("Micronesia", R.color.europe),
-            SubRegion("Australia and New Zealand", R.color.europe),
+            SubRegion("Caribbean", R.color.subcontinent),
+            SubRegion("Melanesia", R.color.subcontinent),
+            SubRegion("Polynesia", R.color.subcontinent),
+            SubRegion("Micronesia", R.color.subcontinent),
+            SubRegion("Australia and New Zealand", R.color.subcontinent),
 
-            SubRegion("Eastern Africa", R.color.europe),
-            SubRegion("Southern Africa", R.color.europe),
-            SubRegion("Middle Africa", R.color.europe),
-            SubRegion("Northern Africa", R.color.europe),
-            SubRegion("Western Africa", R.color.europe),
+            SubRegion("Eastern Africa", R.color.subcontinent),
+            SubRegion("Southern Africa", R.color.subcontinent),
+            SubRegion("Middle Africa", R.color.subcontinent),
+            SubRegion("Northern Africa", R.color.subcontinent),
+            SubRegion("Western Africa", R.color.subcontinent),
 
-            SubRegion("South America", R.color.europe),
-            SubRegion("North America", R.color.europe),
-            SubRegion("Central America", R.color.europe),
+            SubRegion("South America", R.color.subcontinent),
+            SubRegion("North America", R.color.subcontinent),
+            SubRegion("Central America", R.color.subcontinent),
 
-            SubRegion("Western Asia", R.color.europe),
-            SubRegion("Central Asia", R.color.europe),
-            SubRegion("Southern Asia", R.color.europe),
-            SubRegion("South-Eastern Asia", R.color.europe),
-            SubRegion("Eastern Asia", R.color.europe),
+            SubRegion("Western Asia", R.color.subcontinent),
+            SubRegion("Central Asia", R.color.subcontinent),
+            SubRegion("Southern Asia", R.color.subcontinent),
+            SubRegion("South-Eastern Asia", R.color.subcontinent),
+            SubRegion("Eastern Asia", R.color.subcontinent),
         )
 
     }

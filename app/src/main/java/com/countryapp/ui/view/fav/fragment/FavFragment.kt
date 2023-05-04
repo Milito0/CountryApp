@@ -1,5 +1,7 @@
 package com.countryapp.ui.view.fav.fragment
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -49,9 +51,24 @@ class FavFragment : Fragment() {
         favViewModel.getAllCountries()
 
         binding.fabLogout.setOnClickListener{
-            val act = activity as HomeActivity
-            act.clearPreferences()
+            showDialog()
         }
+    }
+
+    private fun showDialog() {
+        val act = activity as HomeActivity
+        val builder: AlertDialog.Builder = AlertDialog.Builder(act)
+        builder.setMessage("Are you sure you want to Log-Out?")
+        builder.apply {
+            setPositiveButton("Yes") { _, _ ->
+                val act = activity as HomeActivity
+                act.clearPreferences()
+            }
+            setNegativeButton("No", DialogInterface.OnClickListener{_, _ ->
+            })
+        }
+        builder.create().show()
+
     }
 
     private fun goToDetails(country: CountryItem) {

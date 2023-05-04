@@ -20,7 +20,7 @@ class FavCountryAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavCountryViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_favcountry, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_country, parent, false)
         return FavCountryViewHolder(view)
     }
 

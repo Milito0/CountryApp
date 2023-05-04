@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_app"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.view.fav.fragment.FavFragment">
 
@@ -22,21 +23,21 @@
         android:layout_height="50dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:textSize="20sp"
+        android:textSize="40sp"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text=".Favourite Countries" />
+        android:text="@string/favorite_countries"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabLogout"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/navBar"
         android:src="@drawable/ic_logout"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:tint="@color/white"
         android:layout_margin="40dp"
         app:layout_constraintEnd_toEndOf="parent"/>
-
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvfav"
@@ -44,9 +45,5 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         app:layout_constraintTop_toBottomOf="@+id/tvTittle"/>
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

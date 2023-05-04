@@ -4,11 +4,14 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#C11212</color>
     <color name="grey">#777070</color>
-    <color name="europe">#1A8D9C</color>
-    <color name="asia">#AF864E</color>
-    <color name="north_america">#B61D2A</color>
-    <color name="south_america">#309898</color>
+    <color name="europe">#C6B3A0</color>
+    <color name="north_america">#E8C39E</color>
+    <color name="asia">#FFDD5353</color>
+    <color name="oceania">#8D4925</color>
     <color name="africa">#6A333B</color>
-    <color name="oceania">#FFDD5353</color>
+    <color name="subcontinent">#C14053</color>
     <color name="splash">#F38D6D</color>
+    <color name="south_america">#FFB48A</color>
+    <color name="navBar">#D66C4A</color>
+    <color name="background_app">#EEAA95</color>
 </resources>

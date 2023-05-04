@@ -39,7 +39,7 @@ class SearchViewModel @Inject constructor(
                             country.fav = true
                     }
                 }
-                countryData.postValue(filterResult)
+                countryData.postValue(filterResult.sortedByDescending { it.fav })
             } else
                 countryData.postValue(emptyList())
 
@@ -58,7 +58,7 @@ class SearchViewModel @Inject constructor(
                             country.fav = true
                     }
                 }
-                countryData.postValue(filterResult)
+                countryData.postValue(filterResult.sortedByDescending { it.fav })
             }
             else
                 countryData.postValue(emptyList())
@@ -77,7 +77,7 @@ class SearchViewModel @Inject constructor(
                             country.fav = true
                     }
                 }
-                countryData.postValue(filterResult)
+                countryData.postValue(filterResult.sortedByDescending { it.fav })
             }
             else
                 countryData.postValue(emptyList())

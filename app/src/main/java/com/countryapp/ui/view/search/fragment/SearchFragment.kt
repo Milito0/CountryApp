@@ -42,10 +42,12 @@ class SearchFragment : Fragment() {
             binding.progressBar.isVisible = true
             binding.svSearch.setQuery(continent, true)
             binding.rbContinent.isChecked = true
-        }
-        if (subContinent != null) {
+        } else if (subContinent != null) {
             binding.rbSubContinent.isChecked = true
             binding.svSearch.setQuery(subContinent, true)
+            binding.progressBar.isVisible = true
+        } else{
+            searchViewModel.getCountries("a")
             binding.progressBar.isVisible = true
         }
 

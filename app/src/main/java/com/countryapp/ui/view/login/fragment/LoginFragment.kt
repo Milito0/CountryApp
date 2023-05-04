@@ -39,6 +39,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun initComponents() {
+
         binding.btnLogin.setOnClickListener {
             if (binding.etEmail.text.isNotEmpty() && binding.etPass.text.isNotEmpty()) {
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(
@@ -63,6 +64,7 @@ class LoginFragment : Fragment() {
             val activity = activity as LoginActivity
             activity.loginGoogle()
         }
+
     }
 
 
