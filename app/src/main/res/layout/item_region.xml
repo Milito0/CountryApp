@@ -20,6 +20,7 @@
             android:layout_marginStart="10dp"
             android:textColor="@color/white"
             android:textSize="20sp"
+            android:layout_marginTop="10dp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_weight="1"
-                android:text=".Countries :"
+                android:text="@string/country_number"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
 
